@@ -38,6 +38,22 @@ description: Guardrails for GitHub Copilot interactions in the Genesis 22 worksp
 3. **WRITE BEFORE END**: Update memory bank just before completing any task
 4. **STATE PRESERVATION**: Ensure my state will not be lost if interrupted
 
+### Multi-Agent Coordination
+
+GitHub Copilot is one of **three AI agents** working on this project:
+
+1. **Cline** - Task execution, file operations, command execution (see [`.clinerules`](../.clinerules))
+2. **GitHub Copilot** (me) - Code completion, inline assistance (THIS FILE)
+3. **Codex/Codex-CLI** - Autonomous agent workflows (see [`AGENTS.md`](../AGENTS.md))
+
+**Cross-Agent References**:
+- **Cline's Rules**: [`.clinerules`](../.clinerules) - Cline's operational blueprint
+- **Copilot's Rules**: `.github/copilot-instructions.md` (this file) - My operational blueprint
+- **Agent Activity Log**: [`AGENTS.md`](../AGENTS.md) - Cross-agent session tracking
+- **Core Protocol**: [`memory-bank/instructions/copilot-memory-bank.instructions.md`](../memory-bank/instructions/copilot-memory-bank.instructions.md) - Universal Memory Bank protocol
+
+All three agents follow the same Memory Bank protocol but have agent-specific configuration files.
+
 ### Core Files (Required)
 
 Before to mark a task as completed you MUST imperatively update memory bank files with current state of task, including any changes made, decisions taken, and dependencies updated. why and thought process behind to be kept in mind for future reference.
@@ -60,5 +76,8 @@ Before to mark a task as completed you MUST imperatively update memory bank file
 - [`memory-bank/chatmodes/*.chatmode.md`](../memory-bank/chatmodes/)
 - [`memory-bank/instructions/*.instructions.md`](../memory-bank/instructions/)
 - [`memory-bank/prompts/*.prompts.md`](../memory-bank/prompts/)
-- [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) (THIS FILE)
-- [`AGENTS.md`](../AGENTS.md) (for Codex and Codex CLI)
+- [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) (THIS FILE - Copilot rules)
+- [`.clinerules`](../.clinerules) (Cline's operational rules)
+> [!IMPORTANT]
+> [`AGENTS.md`](../AGENTS.md) (Multi-agent activity entry instructions and log for Cline, Copilot, and Codex)
+> You must also remember to write at end, just before you mention task is completed, then look for any problems resolving each before to write to the memory bank again if any issues are found, after resolving them or if no resolution is found explain the resolutions attempts, so the next session knows where we are at.
