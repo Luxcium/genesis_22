@@ -2,8 +2,6 @@
 description: "Instructions for maintaining persistence and context across sessions."
 tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'microsoft-docs/*', 'usages', 'vscodeAPI', 'think', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'ms-python.python/getPythonEnvironmentInfo', 'ms-python.python/getPythonExecutableCommand', 'ms-python.python/installPythonPackage', 'ms-python.python/configurePythonEnvironment', 'ms-toolsai.jupyter/configureNotebook', 'ms-toolsai.jupyter/listNotebookPackages', 'ms-toolsai.jupyter/installNotebookPackages', 'extensions', 'todos', 'runTests']
 mode: persistent
-model: Claude Sonnet 4 (copilot)
-
 ---
 
 <!-- memory-bank/prompts/persist.prompt.md -->
