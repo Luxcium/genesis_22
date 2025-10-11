@@ -59,8 +59,8 @@ All three agents follow the same Memory Bank protocol but have agent-specific co
 
 Before to mark a task as completed you MUST imperatively update memory bank files with current state of task, including any changes made, decisions taken, and dependencies updated. why and thought process behind to be kept in mind for future reference.
 
-> [!NOTE] 
-> [ImperatAive Instructions Git Hub Copilot MUST ALWAYS Follow](../memory-bank/instructions/copilot-memory-bank.instructions.md)
+> [!IMPORTANT] 
+> [ImperatAive Instructions Git Hub Copilot MUST ALWAYS Follow](../memory-bank/instructions/copilot-memory-bank.instructions.md):
 
 - 'memory-bank/projectbrief.md'
 - 'memory-bank/productContext.md'
