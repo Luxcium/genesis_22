@@ -1,0 +1,58 @@
+# Genesis 22 Notebook Template - Python Dependencies
+# =================================================
+# This requirements file defines the canonical dependency set for
+# Jupyter notebook work in the Genesis 22 project.
+#
+# Installation:
+#   pip install -r requirements.txt
+#
+# For development:
+#   pip install -r requirements.txt -r requirements-dev.txt
+
+# Core Notebook Infrastructure
+# -----------------------------
+jupyter>=1.0.0              # Jupyter metapackage
+jupyterlab>=4.0.0           # Modern web-based interface
+notebook>=7.0.0             # Classic notebook interface
+ipykernel>=6.29.0           # IPython kernel for Jupyter
+ipywidgets>=8.1.0           # Interactive widgets
+
+# Data Science Stack
+# ------------------
+numpy>=1.26.0               # Numerical computing foundation
+pandas>=2.2.0               # Data manipulation and analysis
+scipy>=1.12.0               # Scientific computing
+scikit-learn>=1.4.0         # Machine learning library
+
+# Visualization
+# -------------
+matplotlib>=3.8.0           # Comprehensive plotting library
+seaborn>=0.13.0             # Statistical data visualization
+plotly>=5.18.0              # Interactive plotting library
+ipympl>=0.9.3               # Matplotlib Jupyter integration
+
+# Development Tools
+# -----------------
+black>=24.0.0               # Code formatter
+isort>=5.13.0               # Import sorting
+pylint>=3.0.0               # Code analysis
+mypy>=1.8.0                 # Static type checker
+ruff>=0.2.0                 # Fast Python linter
+
+# Testing
+# -------
+pytest>=8.0.0               # Testing framework
+pytest-cov>=4.1.0           # Coverage plugin
+nbval>=0.11.0               # Notebook validation
+
+# Documentation
+# -------------
+sphinx>=7.2.0               # Documentation generator
+nbsphinx>=0.9.3             # Jupyter notebook support for Sphinx
+myst-parser>=2.0.0          # Markdown parser for Sphinx
+
+# Utility
+# -------
+python-dotenv>=1.0.0        # Environment variable management
+tqdm>=4.66.0                # Progress bars
+requests>=2.31.0            # HTTP library

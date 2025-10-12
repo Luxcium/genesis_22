@@ -1,0 +1,35 @@
+# Genesis 22 Notebook Template - Development Dependencies
+# ========================================================
+# Additional dependencies for development and testing.
+#
+# Installation:
+#   pip install -r requirements.txt -r requirements-dev.txt
+
+# Include base requirements
+-r requirements.txt
+
+# Development Tools
+# -----------------
+pre-commit>=3.6.0           # Git hook framework
+commitizen>=3.13.0          # Conventional commits helper
+ipdb>=0.13.13               # IPython debugger
+jupyter-contrib-nbextensions>=0.7.0  # Useful notebook extensions
+
+# Performance & Profiling
+# ------------------------
+memory-profiler>=0.61.0     # Memory usage profiler
+line-profiler>=4.1.0        # Line-by-line profiler
+py-spy>=0.3.14              # Sampling profiler
+
+# Quality Assurance
+# -----------------
+bandit>=1.7.6               # Security linter
+safety>=3.0.0               # Dependency security checker
+vulture>=2.11               # Dead code finder
+
+# Notebook Utilities
+# ------------------
+papermill>=2.5.0            # Notebook parameterization and execution
+nbconvert>=7.14.0           # Notebook conversion
+nbformat>=5.9.0             # Notebook format manipulation
+nbdime>=4.0.1               # Notebook diff and merge
