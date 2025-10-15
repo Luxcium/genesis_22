@@ -1,5 +1,10 @@
 # Progress Log
 
+## 2025-10-15
+- **Memory Bank Agents Guardrail**: Added `scripts/ensure-plans.sh` to guarantee `memory-bank/agents/PLANS.md` exists and matches the upstream Genesis 22 template, with optional diff output for drift analysis.
+- **Documentation Update**: Expanded `scripts/README.md` to cover the new guard script in the quick reference table and detailed guidance sections.
+- Impact: Agents now have an automated check to detect and reconcile ExecPlan template divergence without manual inspection.
+
 ## 2025-10-12
 - **Script Infrastructure Overhaul**: Complete enhancement of all shell scripts with comprehensive documentation.
 - **Environment Validation**: Created `scripts/env-setup.sh` (530 lines) for comprehensive environment validation and reporting.

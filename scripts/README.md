@@ -8,6 +8,7 @@ The scripts in this directory are safe to run repeatedly. Each script validates 
 |--------|---------|-------------|
 | `init.sh` | Verify foundation files and initialize repository | After cloning or creating new project |
 | `env-setup.sh` | Validate development environment and generate report | Start of each session or when debugging setup issues |
+| `ensure-plans.sh` | Ensure canonical ExecPlan template exists and matches upstream | After cloning or when auditing memory-bank agents plans |
 | `triad-health.sh` | Check memory-bank triad and VS Code settings | Before/after modifying memory-bank or settings |
 | `validate-memory-bank.sh` | Validate instruction files | Before committing changes to instructions |
 | `validate-chatmodes.sh` | Validate chatmode files | Before committing changes to chatmodes |
@@ -76,6 +77,35 @@ The scripts in this directory are safe to run repeatedly. Each script validates 
 **AI Agent Instructions**: This script should be run at the start of any session to validate the environment. The output provides essential context about available tools and configurations. Always check the exit code to determine if the environment is ready for work.
 
 **Human User Instructions**: Run this script after cloning the repository or when setting up a new development environment. It will check all required tools and provide specific guidance if anything is missing or misconfigured.
+
+---
+
+### ensure-plans.sh
+
+**Purpose**: Guarantees that `memory-bank/agents/PLANS.md` exists and matches the upstream Genesis 22 template.
+
+**Usage**:
+```bash
+./scripts/ensure-plans.sh [--show-diff]
+```
+
+**What it does**:
+1. Checks for required utilities (`curl`, `diff`, `mktemp`).
+2. Creates `memory-bank/agents/` when missing.
+3. Downloads the canonical `PLANS.md` if no local copy exists.
+4. Compares the local file against the upstream reference and reports drift.
+
+**Options**:
+- `--show-diff` - Display the unified diff when differences are detected.
+
+**Exit codes**:
+- `0` - Success (template installed or files match).
+- `1` - Differences detected between local and upstream.
+- `2` - Critical failure (missing dependency, download error, etc.).
+
+**AI Agent Instructions**: Run this script after cloning or when verifying Memory Bank integrity. Treat a non-zero exit code as a cue to reconcile local changes with the upstream template before continuing work.
+
+**Human User Instructions**: Use this script during audits to ensure the canonical ExecPlan template is present. If the script reports differences, review the output (optionally with `--show-diff`) and decide whether to update the local file.
 
 ---
 

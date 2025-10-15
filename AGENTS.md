@@ -1,13 +1,13 @@
 # Codex CLI Agent Guide
 
-This file defines how Codex CLI operates in this repository. It aligns with the Memory Bank protocol and complements `.github/copilot-instructions.md`.
+This file defines how ANY AI AGENTS and Codex CLI operates if you are reading this you are an ai agent in this repository. It aligns with the Memory Bank protocol and complements `.github/copilot-instructions.md`.
 
 > [!NOTE]
 > Seek first into ['github copilot instructions'](./github/copilot-instructions.md) for more information on how we want the project to evolve to use GitHub Copilot with Agents, any behaviour or important information that you see fit for you to use shall be referenced, or included in this set of instructions below at the end. Instruction may be specifict to each agent, or if it is general, it shall be taken into account and referenced using relative links (markdown) or include the language here, in your own AGENTS.md autonomusly and never remove any of your own instructions be carefull when editing your AGENTS.md file yourself not remove, only add.
 
 ## Three AI Agent System or More
 
-This project supports three AI agents with distinct entry points and responsibilities:
+This project supports your ai agent and at least three AI agents with distinct entry points and responsibilities:
 
 - **Codex CLI (YOU)** → `AGENTS.md` (THIS IS YOUR PRIMARY INSTRUCTION FILE)
 - **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
@@ -65,7 +65,7 @@ This project supports three AI agents with distinct entry points and responsibil
 
 ```bash
 # Production dependencies - use explicit version tags
-pnpm add langchain@next @langchain/core@next zod
+pnpm add langchain@next @langchain/core@next zod@latest dotenv@latest
 pnpm add @langchain/openai@next @langchain/anthropic@next
 
 # Development dependencies - use @latest or specific tags
@@ -108,3 +108,7 @@ When you are asked to use a specific mode or model and you are codex/codex-cli y
 ## ExecPlans
 
 When writing complex features or significant refactors, use an ExecPlan (as described in [`memory-bank/agents/PLANS.md`](../memory-bank/agents/PLANS.md)) from design to implementation.
+
+## Activity Log
+
+- 2025-10-15 — GitHub Copilot: Added `scripts/ensure-plans.sh` to enforce the canonical ExecPlan template and updated `scripts/README.md` accordingly. Memory Bank context refreshed to capture the new guardrail.

@@ -1,8 +1,18 @@
 # Active Context
 
-- Timestamp: 2025-10-12T02:30:00+00:00
-- Current focus: Comprehensive script validation, environment setup automation, and documentation enhancement completed. All scripts now have detailed AI-friendly and human-readable documentation.
-- Immediate next action: Final verification of all deliverables, resolve any remaining issues, and ensure memory bank is fully synchronized.
+- Timestamp: 2025-10-15T14:30:00+00:00
+- Current focus: Extending automation coverage to guard Memory Bank artefacts, particularly the canonical ExecPlan template.
+- Immediate next action: Monitor ensure-plans.sh adoption, reconcile any detected drift, and keep Memory Bank automation scripts aligned with template updates.
+
+## Recent Changes (2025-10-15)
+
+### Memory Bank Agents Safeguard
+- **Created `scripts/ensure-plans.sh`**: Adds an idempotent guard that ensures `memory-bank/agents/PLANS.md` exists and matches the upstream Genesis 22 reference.
+  - Generates directory structure when missing and installs the canonical template automatically.
+  - Compares local versus remote copies via background diffing, signalling drift through exit codes.
+  - Supports `--show-diff` flag for detailed inspection without altering local changes.
+- **Updated `scripts/README.md`**: Documented the new script in both the quick reference table and detailed sections, outlining usage, exit codes, and guidance for AI agents and humans.
+- Automation Impact: Provides a lightweight compliance check so agents can quickly detect divergence from the authoritative ExecPlan instructions.
 
 ## Recent Changes (2025-10-12)
 
