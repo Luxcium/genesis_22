@@ -1,18 +1,110 @@
-# Agent Activity Log
+# Codex CLI Agent Guide
 
-This log captures each AI agent session across the Genesis layered bootstrap. Update the table whenever you complete a meaningful stage so the next agent has actionable context.
+This file defines how Codex CLI operates in this repository. It aligns with the Memory Bank protocol and complements `.github/copilot-instructions.md`.
 
-| Timestamp | Agent | Layer Focus | Key Actions | Handoff / Next Step |
-|-----------|-------|-------------|-------------|---------------------|
-| 2025-10-12T02:30:00+00:00 | GitHub Copilot | Script Infrastructure & Documentation | **Comprehensive Enhancement**: Created `scripts/env-setup.sh` (530 lines) for environment validation. Enhanced all 7 scripts with detailed header documentation (AI + human instructions). Expanded `scripts/README.md` from 13→350+ lines with complete script catalog. Expanded main `README.md` from 33→350+ lines with AI agent maintenance guidelines, Memory Bank protocol, code documentation standards, and session workflows. Updated memory bank files (`activeContext.md`, `progress.md`, `techContext.md`). All scripts tested and verified idempotent. **Total**: ~2000 lines of documentation/code added. | All deliverables complete. Optional: Fix persistent.chatmode.md validator issues, add CI/CD integration, or proceed with feature development. |
-| 2025-01-10T13:04:00-04:00 | Cline (Claude 3.7 Sonnet) | Multi-Agent Config | Created `.clinerules` file with comprehensive Cline operational blueprint. Updated `.github/copilot-instructions.md` to establish three-agent coordination (Cline, Copilot, Codex). Updated Memory Bank files (`activeContext.md`, `progress.md`). All agents now reference single source of truth: `memory-bank/instructions/copilot-memory-bank.instructions.md`. | Create Codex-specific configuration file (`.codexrules` or similar) to complete three-agent ecosystem, then proceed with CI integration or feature development. |
-| 2025-09-27T08:59:45-04:00 | Codex (GPT-5) | L4 — Automation & health | Authored validator suite, triad health script, VS Code tasks/settings, ingested commit-policy instructions, refreshed prompt cards, and generated `memory-bank/index.md`. | Consider CI wiring for validators or move into feature-level scaffolding. |
-| 2025-09-27T08:58:47-04:00 | Codex (GPT-5) | L3 — Guidance scaffolding | Verified instruction corpus, introduced `.prettierignore`, authored `bootstrap-maintainer.chatmode.md`, and created the `bootstrap-audit.prompt.md` card with links to governing layers. | Transition to Layer 4 to plan automation and repository health routines. |
-| 2025-09-27T08:57:01-04:00 | Codex (GPT-5) | L2 — Workspace bootstrap | Added VS Code workspace settings, authored Copilot guardrails, created memory-bank triad directories with READMEs, and initialized six core context files with current information. | Advance to Layer 3 to author reusable instructions, prompts, and chat modes as needed. |
-| 2025-09-27T08:54:56-04:00 | Codex (GPT-5) | L1 — Foundation complete | Authored baseline repository files, created `scripts/init.sh`, verified executability, and double-checked idempotence by rerunning the initializer. | Proceed to Layer 2: add workspace ergonomics and memory-bank triad artifacts. |
-| 2025-09-27T08:54:34-04:00 | Codex (GPT-5) | L1 — Foundation prep | Ran `init-genesis-22.sh` to download layered instructions; audited repository and noted missing foundation artifacts. | Finish Layer 1 by creating baseline files and verifying `scripts/init.sh` idempotence. |
+> [!NOTE]
+> Seek first into ['github copilot instructions'](./github/copilot-instructions.md) for more information on how we want the project to evolve to use GitHub Copilot with Agents, any behaviour or important information that you see fit for you to use shall be referenced, or included in this set of instructions below at the end. Instruction may be specifict to each agent, or if it is general, it shall be taken into account and referenced using relative links (markdown) or include the language here, in your own AGENTS.md autonomusly and never remove any of your own instructions be carefull when editing your AGENTS.md file yourself not remove, only add.
 
-## Usage Guidance
-- Log entries in reverse chronological order (newest at top).
-- Capture what changed, why it matters, and what remains.
-- Reference related `memory-bank/*` updates or commits where helpful.
+## Three AI Agent System or More
+
+This project supports three AI agents with distinct entry points and responsibilities:
+
+- **Codex CLI (YOU)** → `AGENTS.md` (THIS IS YOUR PRIMARY INSTRUCTION FILE)
+- **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
+- **VS Code Copilot** → `.github/copilot-instructions.md` (VS Code Copilot's primary instruction file)
+
+## Core Principles (Subset from Memory Bank)
+
+- Always read all files in `memory-bank/` at the start of a task.
+- Plan before acting; document key decisions and assumptions.
+- Write back results and decisions to the Memory Bank before concluding a task.
+- Treat the Memory Bank as authoritative context. Never ignore it.
+
+## Operating Constraints
+
+- Package manager: `pnpm` (see `packageManager` field in package.json files)
+- Node.js: >= 20.11
+- No CI/CD automation added unless explicitly requested.
+- No test scaffolding added unless requested (development-first flow).
+
+## Monorepo Conventions
+
+- Subprojects live under `services/`, `packages/`, `libraries/`.
+- Prefer local, per-package configs when reasonable to reduce cross-project coupling.
+- VS Code settings at the repo root enable Prettier + ESLint across subprojects.
+
+## Editor & Tooling
+
+- Formatting: Prettier (required config) with format-on-save.
+- Linting: ESLint (flat config in new projects), run fixers on save.
+- TypeScript: modern Node target, `src/` → `dist/`, source maps and declarations.
+- Scripts: `dev`, `build`, `start`, `lint(:fix)`, `format(:check)`, `typecheck`.
+
+## Standard Task Flow
+
+1. Read Memory Bank files and the target subproject.
+2. Outline planned changes; keep them minimal and focused.
+3. Implement changes with clear, reviewable diffs.
+4. Validate locally (typecheck, lint). Do not add CI.
+5. Update Memory Bank (active context + progress) with what changed and why.
+
+## Session-Sticky Preferences (Codex CLI)
+
+- Be proactive: implement requested changes without pausing for confirmation.
+- Optimize for developer speed: scripts and editor integration are first-class.
+- Respect existing project structure and conventions.
+
+## Dependency Management Protocol (CRITICAL)
+
+**ABSOLUTE RULE: NEVER write dependency version numbers directly in package.json**
+
+**CORRECT approach:**
+
+1. Create package.json with empty `dependencies: {}` and `devDependencies: {}`
+2. Install ALL dependencies via CLI commands ONLY:
+
+```bash
+# Production dependencies - use explicit version tags
+pnpm add langchain@next @langchain/core@next zod
+pnpm add @langchain/openai@next @langchain/anthropic@next
+
+# Development dependencies - use @latest or specific tags
+pnpm add -D typescript@latest tsx@latest eslint@latest
+pnpm add -D prettier@latest vitest@latest rimraf@latest
+pnpm add -D typescript-eslint@latest eslint-config-prettier@latest
+pnpm add -D eslint-plugin-simple-import-sort@latest
+pnpm add -D eslint-plugin-tsdoc@latest @types/node@latest
+```
+
+**FORBIDDEN:**
+
+- ❌ Writing `"typescript": "^5.7.2"` in package.json
+- ❌ Hallucinating version numbers from outdated training data
+- ❌ Guessing version compatibility
+- ❌ Using `pnpm install` without specific packages
+
+**Rationale:**
+
+- AI models have outdated version knowledge (training data cutoff)
+- Package registries determine latest versions at install time
+- Version tags (`@next`, `@latest`) ensure current releases
+- Avoids version conflicts and deprecated packages
+
+**When documenting dependencies:**
+
+- Record WHY a dependency was chosen in `memory-bank/techContext.md`
+- Note any version constraints or compatibility requirements
+- Document installation commands for reproducibility
+
+## Notes for Future Work
+
+- If adding complex workflows, prefer documenting them in `memory-bank/` and referencing from subproject READMEs.
+- When introducing new dependencies, record rationale in `memory-bank/techContext.md` or relevant docs.
+
+Do not add or remove any modes and/or models in the .instructions.md .prompts.md files or .chatmode.md files in their front matter as this is not something you can validate you must avoid hallucinations those are risky never change, add a descriptions if it is missing but never remove or change any of the existing ones.
+
+When you are asked to use a specific mode or model and you are codex/codex-cli you will use the model and mode you operate under already. you must never validate that it exists (or not) in the front matter of the .instructions.md .prompts.md files or .chatmode.md files before use.
+
+## ExecPlans
+
+When writing complex features or significant refactors, use an ExecPlan (as described in [`memory-bank/agents/PLANS.md`](../memory-bank/agents/PLANS.md)) from design to implementation.

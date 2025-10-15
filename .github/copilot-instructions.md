@@ -59,7 +59,7 @@ All three agents follow the same Memory Bank protocol but have agent-specific co
 
 Before to mark a task as completed you MUST imperatively update memory bank files with current state of task, including any changes made, decisions taken, and dependencies updated. why and thought process behind to be kept in mind for future reference.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > [ImperatAive Instructions Git Hub Copilot MUST ALWAYS Follow](../memory-bank/instructions/copilot-memory-bank.instructions.md):
 
 - 'memory-bank/projectbrief.md'
@@ -75,14 +75,15 @@ Before to mark a task as completed you MUST imperatively update memory bank file
 
 ### Additional Memory Bank And Similar Context Files
 
-  > [!CAUTION]
-  > - [`AGENTS.md`](../AGENTS.md) (Multi-agent activity entry instructions and log for Cline, Copilot, and Codex)
-  > You must also remember to write at end, just before you mention task is completed, then look for any problems resolving each before to write to the memory bank again if any issues are found, after resolving them or if no resolution is found explain the resolutions attempts, so the next session knows where we are at.  
- > - [`.clinerules`](../.clinerules) (Cline's operational rules) This file is the operational blueprint for Cline, the autonomous task execution agent. Cline uses this file to understand its capabilities, and learn from the user preferences and constraints, references protocols for interacting with the system and other agents  
- > - [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) (THIS FILE - Copilot rules) This file is the operational blueprint for GitHub Copilot, the AI code completion agent. Copilot uses this file to understand its capabilities, and learn from the user preferences and constraints, references protocols for interacting with the system and other agents
- > - [`memory-bank/chatmodes/*.chatmode.md`](../memory-bank/chatmodes/)  
- > - [`memory-bank/instructions/*.instructions.md`](../memory-bank/instructions/)  
- > - [`memory-bank/prompts/*.prompts.md`](../memory-bank/prompts/)  
+> [!CAUTION]
+>
+> - [`AGENTS.md`](../AGENTS.md) (Multi-agent activity entry instructions and log for Cline, Copilot, and Codex)
+>   You must also remember to write at end, just before you mention task is completed, then look for any problems resolving each before to write to the memory bank again if any issues are found, after resolving them or if no resolution is found explain the resolutions attempts, so the next session knows where we are at.
+> - [`.clinerules`](../.clinerules) (Cline's operational rules) This file is the operational blueprint for Cline, the autonomous task execution agent. Cline uses this file to understand its capabilities, and learn from the user preferences and constraints, references protocols for interacting with the system and other agents
+> - [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) (THIS FILE - Copilot rules) This file is the operational blueprint for GitHub Copilot, the AI code completion agent. Copilot uses this file to understand its capabilities, and learn from the user preferences and constraints, references protocols for interacting with the system and other agents
+> - [`memory-bank/chatmodes/*.chatmode.md`](../memory-bank/chatmodes/)
+> - [`memory-bank/instructions/*.instructions.md`](../memory-bank/instructions/)
+> - [`memory-bank/prompts/*.prompts.md`](../memory-bank/prompts/)
 
 ## Radical Documentation Changes: Migration into Memory Bank [2025-07-27]
 
@@ -97,6 +98,14 @@ Before to mark a task as completed you MUST imperatively update memory bank file
 - [`memory-bank/prompts/*.prompts.md`](../memory-bank/prompts/)
 - [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) (THIS FILE)
 - [`AGENTS.md`](../AGENTS.md) (for Codex and Codex CLI)
+
+## AGENTS.md Reference
+
+AGENTS.md is a simple format for guiding coding agents like you and Codex. We describe a term that users can use as a shorthand and a simple rule for when to use planning documents. Here, we call it an "ExecPlan". Note that this is an arbitrary term, Codex has not been trained on it. This shorthand can then be used when prompting Codex to direct it to a particular definition of a plan.
+
+## ExecPlans
+
+When writing complex features or significant refactors, use an ExecPlan (as described in [`memory-bank/agents/PLANS.md`](../memory-bank/agents/PLANS.md)) from design to implementation.
 
 ---
 
