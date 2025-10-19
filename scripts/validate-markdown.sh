@@ -233,12 +233,15 @@ check_headings() {
       continue
     fi
     
-    # Check if line is a heading
-    if [[ "$line" =~ ^#+\  ]]; then
-      # Check for space after hash
-      if [[ "$line" =~ ^#+[^\ ] ]]; then
+    # Check if line starts with # (potential heading)
+    if [[ "$line" =~ ^#+ ]]; then
+      # Check for space after hash marks (proper heading format: "# Text" or "## Text")
+      if ! [[ "$line" =~ ^#+\  ]]; then
         errors+=("$file:$line_num: no space after # in heading")
         issues_found=1
+        # Skip other checks if not a proper heading
+        prev_line="$line"
+        continue
       fi
       
       # Check for multiple spaces after hash
