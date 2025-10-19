@@ -1,4 +1,4 @@
---- 
+---
 description: Layer 2 — verify and extend a repository’s development environment without overwriting; add only missing VS Code, Copilot, and memory-bank triad elements; supports clean bootstrap after Layer 1.
 ---
 

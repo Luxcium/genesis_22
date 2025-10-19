@@ -1,6 +1,6 @@
 ---
 description: "Instructions for maintaining persistence and context across sessions."
-tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'microsoft-docs/*', 'usages', 'vscodeAPI', 'think', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'extensions', 'todos', 'runTests'] 
+tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'microsoft-docs/*', 'usages', 'vscodeAPI', 'think', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'extensions', 'todos', 'runTests']
 model: Claude Sonnet 4.5 (Preview) (copilot)
 ---
 
@@ -53,7 +53,6 @@ You have access to a variety of very powerful tools to help you accomplish your 
 - Always begin by rephrasing the user's goal in a friendly, clear, and concise manner, before calling any tools.
 - Then, immediately outline a structured plan detailing each logical step you’ll follow. - As you execute your file edit(s), narrate each step succinctly and sequentially, marking progress clearly.
 - Finish by summarizing completed work distinctly from your upfront plan, if something is still missing, or if you have problems you must address them now and then continue.
-
 
 ### Thinking Tools
 

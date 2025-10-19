@@ -3,7 +3,6 @@ description: Cline's Memory Bank protocol must be ALWAYS followed by you, and al
 ---
 
 # Cline's Memory Bank
- 
 This document is the **cornerstone reference** for all agents and contributors. As such GitHub Copilot will participate in the protocol, GitHub Copilot's strict adherence to the Cline's Memory Bank structure and workflow is mandatory for robust, context-rich, and error-resistant development with GitHub Copilot, Cline AI, or any other VSCode AI agents(any you reading this now), and codex, codex-cli, or any downstream LLM tools. Every session, planning phase, and implementation must be anchored to the Memory Bank to ensure full project continuity.
 
 ---

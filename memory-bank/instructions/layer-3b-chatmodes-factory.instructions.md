@@ -98,7 +98,7 @@ Chat mode files are Markdown files and use the `.chatmode.md` extension and have
 
 * **Body**: Chat mode details and instructions following our strict Markdown protocol
 
-    This is where you provide specific prompts, guidelines, or any other relevant information that you want the AI to follow when in this chat mode. 
+    This is where you provide specific prompts, guidelines, or any other relevant information that you want the AI to follow when in this chat mode.
 
     Reference instructions files by using relative Markdown links. The chat mode instructions will complement whatever is specified in the chat prompt.
 

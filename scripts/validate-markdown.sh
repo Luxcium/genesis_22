@@ -210,9 +210,27 @@ check_headings() {
   local prev_line=""
   local line_num=0
   local in_front_matter=0
+  local in_code_block=0
   
   while IFS= read -r line; do
     ((line_num++))
+    
+    # Track code blocks
+    if [[ "$line" =~ ^\`\`\` ]]; then
+      if [[ $in_code_block -eq 0 ]]; then
+        in_code_block=1
+      else
+        in_code_block=0
+      fi
+      prev_line="$line"
+      continue
+    fi
+    
+    # Skip lines in code blocks
+    if [[ $in_code_block -eq 1 ]]; then
+      prev_line="$line"
+      continue
+    fi
     
     # Track front matter
     if [[ "$line" =~ ^---$ ]]; then

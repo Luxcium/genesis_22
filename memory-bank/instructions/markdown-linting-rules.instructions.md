@@ -75,7 +75,7 @@ This document defines the markdown linting rules and standards that all AI agent
 ### Link Rules
 
 #### MD034 - No Bare URLs
-- Use proper link syntax: `[text](url)` 
+- Use proper link syntax: `[text](url)`
 - Don't use bare URLs like `http://example.com`
 
 #### MD039 - No Space in Link Text
@@ -228,7 +228,7 @@ The project includes a validation script at `scripts/validate-markdown.sh` that 
 
 1. **markdownlint-cli**: Command-line interface for markdown linting
 2. **markdownlint**: Node.js library for markdown validation
-3. **VS Code Extensions**: 
+3. **VS Code Extensions**:
    - markdownlint extension for real-time validation
    - Markdown All in One for formatting assistance
 
