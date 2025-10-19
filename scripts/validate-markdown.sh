@@ -48,7 +48,7 @@
 #
 # =============================================================================
 
-set -euo pipefail
+set -uo pipefail
 
 # =============================================================================
 # CONFIGURATION
@@ -437,6 +437,7 @@ fi
 # Validate each file
 for file in "${markdown_files[@]}"; do
   ((files_checked++))
+  log_info "Validating file $files_checked/${#markdown_files[@]}: $file"
   
   if ! validate_file "$file"; then
     ((files_with_issues++))
