@@ -1,5 +1,29 @@
 # Progress Log
 
+## 2025-10-19
+- **Markdown Linting Infrastructure**: Created comprehensive markdown validation system for project-wide consistency.
+- **New Script: validate-markdown.sh**: Full-featured markdown validator (400+ lines) that checks:
+  - Trailing spaces, multiple blank lines, hard tabs
+  - Heading formatting (spacing, punctuation)
+  - Code block language specification
+  - Common typos (15+ patterns with auto-fix capability)
+  - Line length recommendations
+- **New Documentation: markdown-linting-rules.instructions.md**: Complete linting rules reference (270+ lines) covering:
+  - All markdown formatting rules with examples
+  - Project-specific conventions
+  - AI agent compliance guidelines
+  - Common typo reference list
+- **Fixed 9 Markdown Errors**: Resolved all critical linting issues across 6 files:
+  - Removed trailing spaces from 5 instruction files
+  - Fixed heading punctuation in PLANS.md
+  - Removed multiple consecutive blank lines
+  - Improved script to skip code blocks when validating headings
+- **Documentation Updates**: Enhanced `scripts/README.md` with complete validate-markdown.sh documentation
+- **Script Improvements**: Fixed bugs in validate-markdown.sh (set -e issue, regex patterns, code block handling)
+- **Validation Updates**: Added markdown-linting-rules.instructions.md to external links allow-list
+- Impact: All markdown files now pass validation with 0 errors. AI agents have clear linting guidelines and automated validation tools.
+- Status: ✅ Complete - Markdown linting infrastructure fully implemented, tested, and documented.
+
 ## 2025-10-15
 - **Memory Bank Agents Guardrail**: Added `scripts/ensure-plans.sh` to guarantee `memory-bank/agents/PLANS.md` exists and matches the upstream Genesis 22 template, with optional diff output for drift analysis.
 - **Documentation Update**: Expanded `scripts/README.md` to cover the new guard script in the quick reference table and detailed guidance sections.
