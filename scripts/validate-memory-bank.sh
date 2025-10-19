@@ -56,6 +56,7 @@ allow_external=(
   'layer-*'                                      # All layer files
   conventional-commits-must-be-used.instructions.md
   gitmoji-complete-list.instructions.md
+  markdown-linting-rules.instructions.md         # References external linting standards
 )
 
 # =============================================================================
