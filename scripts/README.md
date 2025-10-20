@@ -13,6 +13,7 @@ The scripts in this directory are safe to run repeatedly. Each script validates 
 | `validate-memory-bank.sh` | Validate instruction files | Before committing changes to instructions |
 | `validate-chatmodes.sh` | Validate chatmode files | Before committing changes to chatmodes |
 | `validate-prompts.sh` | Validate prompt files | Before committing changes to prompts |
+| `validate-markdown.sh` | Validate all markdown files for linting issues | Before committing any markdown changes |
 | `list-slash-commands.sh` | List all available slash commands | When discovering available prompts |
 
 ## Detailed Script Documentation
@@ -281,21 +282,79 @@ memory-bank/prompts/another.prompt.md:8:## Slash Command: /another
 
 ---
 
+### validate-markdown.sh
+
+**Purpose**: Validates that all markdown files follow the project's linting rules and conventions. Checks for formatting issues, common typos, and structural problems.
+
+**Usage**:
+```bash
+./scripts/validate-markdown.sh [--fix-typos] [--check-only]
+```
+
+**Options**:
+- `--fix-typos` - Automatically fix common typos in markdown files
+- `--check-only` - Only report issues, don't suggest fixes
+
+**What it does**:
+1. Finds all markdown files in the repository (excluding node_modules and .git)
+2. Validates each file for:
+   - Trailing spaces (except intentional line breaks)
+   - Multiple consecutive blank lines
+   - Hard tabs (should use spaces)
+   - Heading formatting (spaces after #, no trailing punctuation)
+   - Code blocks without language specification
+   - Common typos (15+ patterns)
+   - Line length recommendations (120 characters)
+3. Optionally fixes common typos automatically with --fix-typos flag
+4. Reports errors and warnings with file locations and line numbers
+
+**Validation Rules**:
+- **Errors** (must fix):
+  - Trailing spaces at end of lines
+  - Multiple consecutive blank lines
+  - Hard tabs instead of spaces
+  - Headings without space after # symbols
+  - Headings with multiple spaces after #
+  - Headings ending with punctuation (. , ; :)
+- **Warnings** (optional):
+  - Code blocks without language specification
+  - Headings not surrounded by blank lines
+  - Lines exceeding 120 characters
+  - Possible typos detected
+
+**Exit codes**:
+- `0` - All validations passed (or only warnings found)
+- `1` - One or more validation errors found
+- `2` - Critical failure (missing dependencies, file access errors)
+
+**AI Agent Instructions**: Run this validator before committing any changes to markdown files. This ensures consistent formatting across the project and catches common typos. If validation fails, review the error messages and fix issues manually or use the --fix-typos flag for automatic typo corrections. Always re-run the validator after making fixes to ensure all problems are resolved. See memory-bank/instructions/markdown-linting-rules.instructions.md for complete rule documentation.
+
+**Human User Instructions**: If this validator fails, check the specific error messages for each file. Most formatting issues can be fixed manually by following the suggestions. Use the --fix-typos flag to automatically correct common typos. After fixing issues, re-run the validator to confirm all problems are resolved. Warnings are informational and may not require action depending on context.
+
+---
+
 ## Usage Guidelines
 
 ### For AI Agents
 
 1. **Session Start**: Run `env-setup.sh` to validate the environment
 2. **Before Commits**: Run relevant validators (`validate-*.sh`) for modified files
+   - `validate-markdown.sh` for any markdown file changes
+   - `validate-memory-bank.sh` for instruction file changes
+   - `validate-chatmodes.sh` for chatmode file changes
+   - `validate-prompts.sh` for prompt file changes
 3. **Health Check**: Run `triad-health.sh` after modifying memory-bank or VS Code settings
 4. **Discovery**: Use `list-slash-commands.sh` to learn available prompts
 5. **Foundation Check**: Run `init.sh` when bootstrapping or verifying a project
+6. **Markdown Fixes**: Use `validate-markdown.sh --fix-typos` to automatically correct common typos
 
 ### For Human Users
 
 1. **Initial Setup**: Run `init.sh` after cloning
 2. **Environment Check**: Run `env-setup.sh` when troubleshooting or setting up
-3. **Pre-Commit**: Run validators before committing changes to memory-bank
+3. **Pre-Commit**: Run validators before committing changes
+   - Always run `validate-markdown.sh` for any markdown changes
+   - Run specific validators for memory-bank, chatmodes, or prompts
 4. **Learning**: Use `list-slash-commands.sh` to discover available prompts
 5. **Regular Health Check**: Run `triad-health.sh` periodically to ensure configuration
 

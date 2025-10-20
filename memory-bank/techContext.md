@@ -21,6 +21,13 @@
 - `scripts/validate-memory-bank.sh` - Validates instruction file format
 - `scripts/validate-chatmodes.sh` - Validates chatmode file format and configuration
 - `scripts/validate-prompts.sh` - Validates prompt file structure
+- `scripts/validate-markdown.sh` - Validates all markdown files for linting issues (new in 2025-10-19)
+  - Checks trailing spaces, blank lines, hard tabs
+  - Validates heading formatting and punctuation
+  - Detects code blocks without language specification
+  - Identifies common typos (15+ patterns)
+  - Supports `--fix-typos` for automatic typo correction
+  - Supports `--check-only` for report-only mode
 - `scripts/list-slash-commands.sh` - Lists all available slash commands from prompts
 
 ### Development Environment

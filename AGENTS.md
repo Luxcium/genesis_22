@@ -111,4 +111,5 @@ When writing complex features or significant refactors, use an ExecPlan (as desc
 
 ## Activity Log
 
+- 2025-10-19 — GitHub Copilot: Created comprehensive markdown linting infrastructure with `scripts/validate-markdown.sh` (400+ lines) and `memory-bank/instructions/markdown-linting-rules.instructions.md` (270+ lines). Fixed all 9 markdown linting errors across 6 files. Updated scripts/README.md with complete documentation. Enhanced validate-memory-bank.sh to allow external links in linting rules. All markdown files now pass validation with 0 errors. Memory Bank updated with progress and patterns.
 - 2025-10-15 — GitHub Copilot: Added `scripts/ensure-plans.sh` to enforce the canonical ExecPlan template and updated `scripts/README.md` accordingly. Memory Bank context refreshed to capture the new guardrail.

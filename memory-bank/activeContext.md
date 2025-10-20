@@ -1,8 +1,62 @@
 # Active Context
 
-- Timestamp: 2025-10-15T14:30:00+00:00
-- Current focus: Extending automation coverage to guard Memory Bank artefacts, particularly the canonical ExecPlan template.
-- Immediate next action: Monitor ensure-plans.sh adoption, reconcile any detected drift, and keep Memory Bank automation scripts aligned with template updates.
+- Timestamp: 2025-10-19T00:16:57+00:00
+- Current focus: Markdown linting and validation infrastructure complete. All markdown files pass validation.
+- Immediate next action: Monitor markdown linting adoption, use validate-markdown.sh before commits, maintain zero-error status.
+
+## Recent Changes (2025-10-19)
+
+### Markdown Linting Infrastructure Complete
+- **Created `scripts/validate-markdown.sh`**: Comprehensive markdown validator with 400+ lines implementing:
+  - Trailing space detection (with line break exception)
+  - Multiple blank line detection
+  - Hard tab detection
+  - Heading validation (proper spacing, no trailing punctuation)
+  - Code block language specification checking
+  - Common typo detection (15+ patterns)
+  - Line length recommendations (120 char warning)
+  - Automatic typo fixing with `--fix-typos` flag
+  - Clear error/warning reporting with file:line references
+  
+- **Created `memory-bank/instructions/markdown-linting-rules.instructions.md`**: Complete linting rules documentation (270+ lines) covering:
+  - All markdown formatting rules (MD001-MD042)
+  - Project-specific conventions (front-matter, path markers, external links)
+  - AI agent compliance instructions
+  - Common typo reference list
+  - Related documentation links
+  
+- **Fixed All Markdown Errors**: Resolved 9 critical issues:
+  - layer-3b-chatmodes-factory.instructions.md: trailing space
+  - copilot-memory-bank.instructions.md: trailing space
+  - markdown-linting-rules.instructions.md: 2 trailing spaces
+  - layer-2-verify-and-bootstrap.instructions.md: trailing space
+  - persistent.chatmode.md: trailing space & multiple blank lines
+  - PLANS.md: heading punctuation (removed colon)
+  
+- **Improved Script Reliability**: Fixed multiple bugs in validate-markdown.sh:
+  - Changed from `set -euo pipefail` to `set -uo pipefail` (prevents early exit on validation errors)
+  - Fixed heading validation regex (prevented false positives)
+  - Added code block tracking (prevents false positives on # in code)
+  - Added debug logging for validation progress
+  
+- **Documentation Updates**:
+  - Added validate-markdown.sh to scripts/README.md quick reference table
+  - Created detailed script documentation section with usage, options, validation rules, exit codes
+  - Updated AI agent and human user usage guidelines
+  - Added markdown-linting-rules.instructions.md to validate-memory-bank.sh allow-list
+  
+- **Validation Results**:
+  - ✅ 0 errors (down from 9)
+  - 147 warnings (down from 174, mostly optional: long lines, code blocks without language)
+  - 35 markdown files validated
+  - All validation scripts tested and working
+
+### Key Patterns Established
+1. **Automated Validation**: validate-markdown.sh must be run before committing markdown changes
+2. **Zero-Error Policy**: All markdown files must pass error checks (warnings are optional)
+3. **Typo Prevention**: 15+ common typos detected automatically, fixable with --fix-typos
+4. **AI Agent Compliance**: AI agents must output properly linted markdown from the start
+5. **Documentation First**: Comprehensive linting rules documented for both agents and humans
 
 ## Recent Changes (2025-10-15)
 
