@@ -39,7 +39,15 @@ Before ANY task, I must read these files in order:
 **[MB-7]** Use clear, consistent Markdown at all times
 **[MB-8]** Continuously review and refine for better context management
 
-## 🏗️ Genesis 22 Project Patterns
+## 🏗️ Genesis Project Patterns
+
+Do not add or remove any modes and/or models in the .instructions.md .prompts.md files or .chatmode.md files in their front matter as this is not something you can validate you must avoid hallucinations those are risky never change, add a descriptions if it is missing but never remove or change any of the existing ones.
+
+When you are asked to use a specific mode or model and you are Cline AI you will use the model and mode you operate under already. You must never validate that it exists (or not) in the front matter of the .instructions.md .prompts.md files or .chatmode.md files before use.
+
+## ExecPlans
+
+When writing complex features or significant refactors, use an ExecPlan (as described in [`memory-bank/agents/PLANS.md`](../memory-bank/agents/PLANS.md)) from design to implementation.
 
 ### Layered Bootstrap Philosophy
 

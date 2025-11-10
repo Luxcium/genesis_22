@@ -13,6 +13,8 @@ This project supports your ai agent and at least three AI agents with distinct e
 - **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
 - **VS Code Copilot** → `.github/copilot-instructions.md` (VS Code Copilot's primary instruction file)
 
+**Important:** When you read other agents' context and instruction files, do NOT modify them. Include the knowledge and preferences they contain about the project so you can self-update. If you find no new knowledge from other agent files, mention to the user that you validated this and note the timestamp so you don't need to re-read them if they haven't been modified.
+
 ## Core Principles (Subset from Memory Bank)
 
 - Always read all files in `memory-bank/` at the start of a task.
@@ -23,9 +25,11 @@ This project supports your ai agent and at least three AI agents with distinct e
 ## Operating Constraints
 
 - Package manager: `pnpm` (see `packageManager` field in package.json files)
-- Node.js: >= 20.11
+- Node.js: >= 22.11
 - No CI/CD automation added unless explicitly requested.
 - No test scaffolding added unless requested (development-first flow).
+
+Extended autonomous operation: Your A.I. Agent can work independently for hours while maintaining clarity and focus on incremental progress. The agent must make steady advances on a few tasks at a time rather than attempting everything at once. It provides fact-based progress updates that accurately reflect what has been accomplished.
 
 ## Monorepo Conventions
 
